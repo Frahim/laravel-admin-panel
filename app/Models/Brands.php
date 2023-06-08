@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Product;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Brands extends Model
 {
@@ -22,4 +23,9 @@ class Brands extends Model
         'meta_description',
         'status',
     ];
+
+    public function products()
+    {
+        return $this->hasMany(Product::class, 'brand_id', 'id');
+    }
 }
